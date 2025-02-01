@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:hospitalization/constants/SizeConfig.dart';
 
-import '../bottom_nav_pages/first_page_nav_bar.dart';
+import '../bottom_nav_pages/landing_page_nav_bar.dart';
+import '../constants/SizeConfig.dart';
 import '../constants/app_data_controller.dart';
 
 class EmailPasswordWidget extends StatefulWidget {
@@ -86,7 +86,7 @@ class EmailPasswordWidgetState extends State<EmailPasswordWidget> {
                     //if (_formKey.currentState?.validate() ?? false) {
                       appDataController.isLogin = true;
                       Get.snackbar("Success", "Login successful...!");
-                      Get.to(FirstPageNavBar());
+                      Get.to(LandingPageNavBar());
                    // }
                   },
                   style: ElevatedButton.styleFrom(

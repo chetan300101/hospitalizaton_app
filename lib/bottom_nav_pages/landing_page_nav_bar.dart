@@ -2,16 +2,17 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hospitalization/constants/app_data_controller.dart';
 
-class FirstPageNavBar extends StatefulWidget {
-  const FirstPageNavBar({super.key});
+import '../constants/app_data_controller.dart';
+
+class LandingPageNavBar extends StatefulWidget {
+  const LandingPageNavBar({super.key});
 
   @override
-  State<FirstPageNavBar> createState() => _FirstPageNavBarState();
+  State<LandingPageNavBar> createState() => _LandingPageNavBarState();
 }
 
-class _FirstPageNavBarState extends State<FirstPageNavBar> {
+class _LandingPageNavBarState extends State<LandingPageNavBar> {
   AppDataController appDataController = Get.find();
 
   int selectedIndex = 0;

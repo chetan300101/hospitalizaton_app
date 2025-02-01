@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 class DeviceDimensions {
   static double getDeviceHeight(BuildContext context) {
     return MediaQuery.of(context).size.height;
@@ -32,7 +34,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: _isDarkTheme ? ThemeData.dark() : ThemeData.light(),
-      home: SettingsPage(toggleTheme: _toggleTheme, isDarkTheme: _isDarkTheme),
+      home: HomeScreen()
+
+
+      /*SettingsPage(toggleTheme: _toggleTheme, isDarkTheme: _isDarkTheme)*/,
     );
   }
 }
@@ -101,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   static final List<Widget> _pages = <Widget>[
-    const Center(child: Text('Home Page', style: TextStyle(fontSize: 20))),
+    HomePage(),
     const Center(child: Text('Search Page', style: TextStyle(fontSize: 20))),
     const Center(child: Text('Profile Page', style: TextStyle(fontSize: 20))),
     SettingsPage(
@@ -119,7 +124,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Bottom Nav Bar Example')),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

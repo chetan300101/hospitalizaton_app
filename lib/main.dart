@@ -35,14 +35,11 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
   @override
   void initState() {
@@ -53,11 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   getDeviceType(){
     bool iphone = SizeConfig().getDeviceType()=="phone";
-    debugPrint("isPhone ===== $iphone");
   }
-
   int _selectedIndex = 0;
-
   static final List<Widget> _pages = <Widget>[
     HomePage(),
     const Center(child: Text('Search Page', style: TextStyle(fontSize: 20))),
@@ -77,7 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         body: _pages[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

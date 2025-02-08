@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
       "color": Color.fromRGBO(132, 204, 19, 1)
     },
     {
-      "title": "Skin & Hair",
+      "title": "Skin &\nHair",
       "image": "assets/svg/skin_hair.svg",
       "color": Color.fromRGBO(207, 65, 92, 1)
     },
@@ -469,6 +469,7 @@ class _HomePageState extends State<HomePage> {
                         scrollDirection: Axis.horizontal,
                         itemCount: listViewImages.length,
                         itemBuilder: (context, index) => Column(
+                          spacing: 1 * SizeConfig.blockSizeVertical,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -488,7 +489,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Text(
                                   listViewImages[index]['title'],
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(color: Colors.black,fontSize: 12 * SizeConfig.blockSizeVertical),
+                                  style: TextStyle(color: Colors.black,fontSize: 12 * SizeConfig.blockSizeVertical,height: 1.1 * SizeConfig.blockSizeVertical),
                                   maxLines: 2,
                                 ))
                           ],

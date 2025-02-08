@@ -1,9 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hospital_app/bottom_nav_pages/popular_doctor_page.dart';
 import 'package:hospital_app/constants/app_data_controller.dart';
 
 import '../constants/SizeConfig.dart';
@@ -39,7 +38,7 @@ class _HomePageState extends State<HomePage> {
       "color": Color.fromRGBO(132, 204, 19, 1)
     },
     {
-      "title": "Skin and Hair",
+      "title": "Skin & Hair",
       "image": "assets/svg/skin_hair.svg",
       "color": Color.fromRGBO(207, 65, 92, 1)
     },
@@ -55,23 +54,28 @@ class _HomePageState extends State<HomePage> {
     }
   ];
 
-  List<Map<String, dynamic>> docList = [
+  List<Map<String, dynamic>> doctorsList = [
     {
       "name": "Dr.Chetan Kale",
-      "image": 'assets/svg/stratoscope.svg',
-      "color": Color.fromRGBO(138, 91, 245, 1)
+      "specialist": "Pediatrician",
+      "experience": "10 year experience",
+      "location": "Pimpri-Chinchwad",
+      "image": 'assets/svg/home_page/doc_chetan_kale.jpg',
     },
     {
-      "title": "Heart",
-      "image": "assets/svg/ecg_heart.svg",
-      "color": Color.fromRGBO(132, 204, 19, 1)
+      "name": "Dr.Kiran Doke",
+      "specialist": "Pediatrician",
+      "experience": "10 year experience",
+      "location": "Pimpri-Chinchwad",
+      "image": "assets/svg/home_page/doc_kiran_doke.jpg",
     },
     {
-      "title": "Skin and Hair",
-      "image": "assets/svg/skin_hair.svg",
-      "color": Color.fromRGBO(207, 65, 92, 1)
+      "name": "Dr.Radha Shelke",
+      "specialist": "Pediatrician",
+      "experience": "10 year experience",
+      "location": "Pimpri-Chinchwad",
+      "image": "assets/svg/home_page/doc_radha_shelke.jpg",
     },
-
   ];
 
   @override
@@ -82,6 +86,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
@@ -89,7 +94,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(
                 left: 15 * SizeConfig.blockSizeHorizontal,
                 right: 15 * SizeConfig.blockSizeHorizontal),
-            height: 200 * SizeConfig.blockSizeVertical,
+            height: 90 * SizeConfig.blockSizeVertical,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: Color.fromRGBO(1, 166, 157, 1),
@@ -98,13 +103,12 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 30 * SizeConfig.blockSizeVertical,
+                  height: 35 * SizeConfig.blockSizeVertical,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Chetan Kale",
@@ -112,7 +116,33 @@ class _HomePageState extends State<HomePage> {
                               fontSize: 20 * SizeConfig.blockSizeVertical,
                               color: Colors.white),
                         ),
-                        Spacer(),
+                        Text(
+                          "Pune",
+                          style: TextStyle(
+                              fontSize: 12 * SizeConfig.blockSizeVertical,
+                              color: Colors.white),
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.search,
+                          color: Colors.white,
+                          size: 20 * SizeConfig.blockSizeVertical,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          Icons.notifications,
+                          color: Colors.white,
+                          size: 20 * SizeConfig.blockSizeVertical,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
                         Container(
                           width: 99 * SizeConfig.blockSizeHorizontal,
                           height: 25 * SizeConfig.blockSizeVertical,
@@ -128,129 +158,20 @@ class _HomePageState extends State<HomePage> {
                           )),
                         )
                       ],
-                    ),
-                    Text(
-                      "Pune",
-                      style: TextStyle(
-                          fontSize: 12 * SizeConfig.blockSizeVertical,
-                          color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 63 * SizeConfig.blockSizeVertical,
-                    ),
-                    GetBuilder<AppDataController>(
-                        id: 'search_filter',
-                        builder: (context) {
-                          return Stack(
-                            children: [
-                              TextField(
-                                decoration: InputDecoration(
-                                  hintText: 'Search for Doctor',
-                                  prefixIcon: Icon(Icons.search),
-                                  suffixIcon: GestureDetector(
-                                    behavior: HitTestBehavior.translucent,
-                                    onTap: () {
-                                      showFilterPopup = true;
-                                      appDataController
-                                          .update(['search_filter']);
-                                    },
-                                    child: Container(
-                                      padding: EdgeInsets.all(
-                                          12 * SizeConfig.blockSizeVertical),
-                                      child: SvgPicture.asset(
-                                          "assets/svg/filter_icon_Svg.svg",
-                                          fit: BoxFit.fill,
-                                          color:
-                                              Color.fromRGBO(171, 170, 187, 1)),
-                                    ),
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                ),
-                              ),
-                              Visibility(
-                                  visible: showFilterPopup,
-                                  child: Align(
-                                    alignment: Alignment.topRight,
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                          top: 5 * SizeConfig.blockSizeVertical,
-                                          left: 5 *
-                                              SizeConfig.blockSizeHorizontal),
-                                      height: 60 * SizeConfig.blockSizeVertical,
-                                      width:
-                                          122 * SizeConfig.blockSizeHorizontal,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              5 *
-                                                  SizeConfig
-                                                      .blockSizeVertical)),
-                                      child: Column(
-                                        spacing:
-                                            5 * SizeConfig.blockSizeVertical,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          GestureDetector(
-                                            behavior:
-                                                HitTestBehavior.translucent,
-                                            onTap: () {
-                                              selectedFilter = "Near by";
-                                              showFilterPopup = false;
-                                              appDataController
-                                                  .update(['search_filter']);
-                                            },
-                                            child: Text(
-                                              "Near by",
-                                              style: TextStyle(
-                                                  fontSize: 14 *
-                                                      SizeConfig
-                                                          .blockSizeVertical,
-                                                  color: Colors.black),
-                                            ),
-                                          ),
-                                          GestureDetector(
-                                            behavior:
-                                                HitTestBehavior.translucent,
-                                            onTap: () {
-                                              selectedFilter = "Popular";
-                                              showFilterPopup = false;
-                                              appDataController
-                                                  .update(['search_filter']);
-                                            },
-                                            child: Text(
-                                              "Popular",
-                                              style: TextStyle(
-                                                  fontSize: 14 *
-                                                      SizeConfig
-                                                          .blockSizeVertical,
-                                                  color: Colors.black),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ))
-                            ],
-                          );
-                        }),
+                    )
                   ],
                 )
               ],
             ),
           ),
           SizedBox(
-            height: 500 * SizeConfig.blockSizeVertical,
+            height: 600 * SizeConfig.blockSizeVertical,
             width: MediaQuery.of(context).size.width,
             child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 physics: ClampingScrollPhysics(),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       height: 20 * SizeConfig.blockSizeVertical,
@@ -272,35 +193,16 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.symmetric(
                             horizontal: 10 * SizeConfig.blockSizeHorizontal,
                             vertical: 5 * SizeConfig.blockSizeVertical),
-                        height: 182 * SizeConfig.blockSizeVertical,
+                        height: 172 * SizeConfig.blockSizeVertical,
                         child: Column(
                           spacing: 5 * SizeConfig.blockSizeVertical,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(
-                                      2 * SizeConfig.blockSizeVertical),
-                                  child: SvgPicture.asset(
-                                      "assets/svg/water_drop.svg",
-                                      fit: BoxFit.fill,
-                                      color: Color.fromRGBO(0, 0, 0, 1)),
-                                ),
-                                Text(
-                                  "Appreciating",
-                                  style: TextStyle(
-                                      fontSize:
-                                          10 * SizeConfig.blockSizeVertical,
-                                      color: Colors.black),
-                                ),
-                              ],
-                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
+                                  //  color: Colors.red,
                                   height: 150 * SizeConfig.blockSizeVertical,
                                   width: 150 * SizeConfig.blockSizeVertical,
                                   padding: EdgeInsets.all(
@@ -314,68 +216,113 @@ class _HomePageState extends State<HomePage> {
                                 SizedBox(
                                   width: 150 * SizeConfig.blockSizeHorizontal,
                                   child: Column(
-                                    spacing: 5 * SizeConfig.blockSizeVertical,
-                                    mainAxisSize: MainAxisSize.min,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        "Thank You For Donating!",
-                                        style: TextStyle(
-                                            fontSize: 10 *
-                                                SizeConfig.blockSizeVertical,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Text(
-                                        "Blood Donation",
-                                        style: TextStyle(
-                                            fontSize: 16 *
-                                                SizeConfig.blockSizeVertical,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      Text(
-                                        "Each person who donates blood can save up to 3 lives. 💉🙏",
-                                        style: TextStyle(
-                                            fontSize: 10 *
-                                                SizeConfig.blockSizeVertical,
-                                            fontWeight: FontWeight.w400),
-                                        maxLines: 2,
+                                      Row(
+                                        children: [
+                                          Spacer(),
+                                          Container(
+                                            alignment: Alignment.topRight,
+                                            padding: EdgeInsets.all(2 *
+                                                SizeConfig.blockSizeVertical),
+                                            child: SvgPicture.asset(
+                                                "assets/svg/water_drop.svg",
+                                                fit: BoxFit.fill,
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1)),
+                                          ),
+                                          Text(
+                                            "Appreciating",
+                                            style: TextStyle(
+                                                fontSize: 10 *
+                                                    SizeConfig
+                                                        .blockSizeVertical,
+                                                color: Colors.black),
+                                          ),
+                                        ],
                                       ),
                                       SizedBox(
+                                        width: 150 *
+                                            SizeConfig.blockSizeHorizontal,
                                         height:
-                                            15 * SizeConfig.blockSizeVertical,
-                                      ),
-                                      Align(
-                                        alignment: Alignment.topRight,
-                                        child: Container(
-                                          height:
-                                              30 * SizeConfig.blockSizeVertical,
-                                          width: 115 *
-                                              SizeConfig.blockSizeHorizontal,
-                                          decoration: BoxDecoration(
-                                              color: Color.fromRGBO(
-                                                  1, 166, 157, 1),
-                                              borderRadius:
-                                                  BorderRadius.circular(25 *
-                                                      SizeConfig
-                                                          .blockSizeVertical)),
-                                          child: Center(
-                                            child: Text(
-                                              "Find More Donors",
+                                            140 * SizeConfig.blockSizeVertical,
+                                        child: Column(
+                                          spacing:
+                                              5 * SizeConfig.blockSizeVertical,
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              height: 5 *
+                                                  SizeConfig.blockSizeVertical,
+                                            ),
+                                            Text(
+                                              "Thank You For Donating!",
                                               style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w500,
                                                   fontSize: 10 *
                                                       SizeConfig
-                                                          .blockSizeVertical),
+                                                          .blockSizeVertical,
+                                                  fontWeight: FontWeight.w500),
                                             ),
-                                          ),
+                                            Text(
+                                              "Blood Donation",
+                                              style: TextStyle(
+                                                  fontSize: 16 *
+                                                      SizeConfig
+                                                          .blockSizeVertical,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            Text(
+                                              "Each person who donates blood can save up to 3 lives. 💉🙏",
+                                              style: TextStyle(
+                                                  fontSize: 10 *
+                                                      SizeConfig
+                                                          .blockSizeVertical,
+                                                  fontWeight: FontWeight.w400),
+                                              maxLines: 2,
+                                            ),
+                                            Spacer(),
+                                            Align(
+                                              alignment: Alignment.bottomRight,
+                                              child: Container(
+                                                height: 30 *
+                                                    SizeConfig
+                                                        .blockSizeVertical,
+                                                width: 115 *
+                                                    SizeConfig
+                                                        .blockSizeHorizontal,
+                                                decoration: BoxDecoration(
+                                                    color: Color.fromRGBO(
+                                                        1, 166, 157, 1),
+                                                    borderRadius: BorderRadius
+                                                        .circular(25 *
+                                                            SizeConfig
+                                                                .blockSizeVertical)),
+                                                child: Center(
+                                                  child: Text(
+                                                    "Find More Donors",
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 10 *
+                                                            SizeConfig
+                                                                .blockSizeVertical),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ],
@@ -411,7 +358,9 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Stack(
                                       children: [
-                                        Image.network(imageArray[index]),
+                                        ClipRRect(
+                                            borderRadius: BorderRadius.circular(10),
+                                            child: Image.network(imageArray[index])),
                                         Align(
                                           alignment: Alignment.topRight,
                                           child: Container(
@@ -422,9 +371,9 @@ class _HomePageState extends State<HomePage> {
                                                 right: 5 *
                                                     SizeConfig
                                                         .blockSizeHorizontal),
-                                            height: 30 *
+                                            height: 25 *
                                                 SizeConfig.blockSizeVertical,
-                                            width: 30 *
+                                            width: 25 *
                                                 SizeConfig.blockSizeVertical,
                                             decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
@@ -506,7 +455,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 10 * SizeConfig.blockSizeVertical,
                     ),
-                    Container(
+                    SizedBox(
                       height: 100 * SizeConfig.blockSizeVertical,
                       width: MediaQuery.of(context).size.width,
                       child: ListView.separated(
@@ -549,69 +498,289 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 10 * SizeConfig.blockSizeVertical,
                     ),
-                    Container(
-                      height: 497 * SizeConfig.blockSizeVertical,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10 * SizeConfig.blockSizeHorizontal),
-                      child:Column(
+                    SizedBox(
+                      // color:Colors.red,
+                      height: 445 * SizeConfig.blockSizeVertical,
+                      child: Column(
                         children: [
                           Row(
                             children: [
-                              Text("Popular Doctor",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 16 * SizeConfig.blockSizeVertical),),
-                              Spacer(),
+                              SizedBox(
+                                width: 20 * SizeConfig.blockSizeHorizontal,
+                              ),
                               Text(
-                                'See all',
+                                "Popular Doctor",
                                 style: TextStyle(
-                                    fontSize: 14 * SizeConfig.blockSizeVertical,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(1, 166, 157, 1)),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize:
+                                        16 * SizeConfig.blockSizeVertical),
+                              ),
+                              Spacer(),
+                              GestureDetector(
+                                behavior: HitTestBehavior.translucent,
+                                onTap: (){
+                                  Get.to(PopularDoctorPage());
+                                },
+                                child: Text(
+                                  'See all',
+                                  style: TextStyle(
+                                      fontSize: 14 * SizeConfig.blockSizeVertical,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color.fromRGBO(1, 166, 157, 1)),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10 * SizeConfig.blockSizeHorizontal,
                               ),
                             ],
                           ),
                           SizedBox(
-                            height: 400 * SizeConfig.blockSizeVertical,
-
+                            height: 5 * SizeConfig.blockSizeVertical,
+                          ),
+                          SizedBox(
+                            height: 415 * SizeConfig.blockSizeVertical,
+                            width: MediaQuery.of(context).size.width,
                             child: ListView.separated(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 10 * SizeConfig.blockSizeHorizontal,
+                                  horizontal:
+                                      10 * SizeConfig.blockSizeHorizontal,
                                   vertical: 5 * SizeConfig.blockSizeVertical),
-                              physics: AlwaysScrollableScrollPhysics(),
+                              physics: NeverScrollableScrollPhysics(),
                               scrollDirection: Axis.vertical,
-                              itemCount: listViewImages.length,
+                              itemCount: doctorsList.length,
                               itemBuilder: (context, index) => Container(
-                                height: 141 * SizeConfig.blockSizeVertical,
-                                padding: EdgeInsets.only(top: 17 * SizeConfig.blockSizeVertical,left: 10 * SizeConfig.blockSizeHorizontal),
-                                decoration: BoxDecoration(color: Colors.white),
+                                height: 130 * SizeConfig.blockSizeVertical,
+                                padding: EdgeInsets.only(
+                                    top: 10 * SizeConfig.blockSizeVertical,
+                                    left: 10 * SizeConfig.blockSizeHorizontal),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          blurRadius: 12,
+                                          color: Color.fromRGBO(0, 0, 0, 0.15))
+                                    ],
+                                    borderRadius: BorderRadius.circular(15)),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Container(
-                                      padding: EdgeInsets.all(12),
-                                      decoration: BoxDecoration(
-                                          color: listViewImages[index]['color'],
-                                          borderRadius: BorderRadius.circular(10)),
-                                      height: 105 * SizeConfig.blockSizeVertical,
-                                      width: 98 * SizeConfig.blockSizeVertical,
-                                      child: SvgPicture.asset(
-                                          listViewImages[index]['image']),
+                                    SizedBox(
+                                      height:
+                                          115 * SizeConfig.blockSizeVertical,
+                                      width:
+                                          115 * SizeConfig.blockSizeHorizontal,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.asset(
+                                            doctorsList[index]['image']),
+                                      ),
                                     ),
                                     SizedBox(
-                                        height: 30 * SizeConfig.blockSizeVertical,
-                                        width: 60 * SizeConfig.blockSizeHorizontal,
-                                        child: Text(
-                                          listViewImages[index]['title'],
-                                          textAlign: TextAlign.center,
-                                          maxLines: 2,
-                                        ))
+                                      width: 10 * SizeConfig.blockSizeVertical,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        SizedBox(
+                                            height: 25 *
+                                                SizeConfig.blockSizeVertical,
+                                            child: Text(
+                                              doctorsList[index]['name'],
+                                              textAlign: TextAlign.center,
+                                              maxLines: 1,
+                                              style: TextStyle(
+                                                  fontSize: 16 *
+                                                      SizeConfig
+                                                          .blockSizeVertical,
+                                                  fontWeight: FontWeight.w600),
+                                            )),
+                                        SizedBox(
+                                            height: 20 *
+                                                SizeConfig.blockSizeVertical,
+                                            child: Text(
+                                              doctorsList[index]['specialist'],
+                                              textAlign: TextAlign.center,
+                                              maxLines: 1,
+                                              style: TextStyle(
+                                                  fontSize: 12 *
+                                                      SizeConfig
+                                                          .blockSizeVertical,
+                                                  fontWeight: FontWeight.w400),
+                                            )),
+                                        SizedBox(
+                                            height: 20 *
+                                                SizeConfig.blockSizeVertical,
+                                            child: Text(
+                                              doctorsList[index]['experience'],
+                                              textAlign: TextAlign.center,
+                                              maxLines: 1,
+                                              style: TextStyle(
+                                                  fontSize: 12 *
+                                                      SizeConfig
+                                                          .blockSizeVertical,
+                                                  fontWeight: FontWeight.w400),
+                                            )),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        SizedBox(
+                                          //color: Colors.red,
+                                          width: 210 *
+                                              SizeConfig.blockSizeHorizontal,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Icon(
+                                                Icons.location_on_rounded,
+                                                color: Colors.black,
+                                                size: 15 *
+                                                    SizeConfig
+                                                        .blockSizeVertical,
+                                              ),
+                                              Container(
+                                                  padding:
+                                                      EdgeInsets.only(top: 2),
+                                                  height: 20 *
+                                                      SizeConfig
+                                                          .blockSizeVertical,
+                                                  child: Text(
+                                                    doctorsList[index]
+                                                        ['location'],
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: 1,
+                                                    style: TextStyle(
+                                                        fontSize: 12 *
+                                                            SizeConfig
+                                                                .blockSizeVertical,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  )),
+                                              Spacer(),
+                                              Icon(
+                                                Icons.star,
+                                                color: Colors.yellow,
+                                                size: 15 *
+                                                    SizeConfig
+                                                        .blockSizeVertical,
+                                              ),
+                                              Text("4.5"),
+                                              SizedBox(
+                                                width: 5 *
+                                                    SizeConfig
+                                                        .blockSizeHorizontal,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )
                                   ],
                                 ),
                               ),
-                              separatorBuilder: (BuildContext context, int index) =>
-                                  Container(
-                                    height: 10 * SizeConfig.blockSizeHorizontal,
-                                  ),
+                              separatorBuilder:
+                                  (BuildContext context, int index) =>
+                                      Container(
+                                height: 10 * SizeConfig.blockSizeHorizontal,
+                              ),
                             ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10 * SizeConfig.blockSizeVertical,
+                    ),
+                    Container(
+                        padding: EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
+                        child: Text('Learn more about the World of\nDoctors',
+                          style: TextStyle(
+                              fontSize: 16 * SizeConfig.blockSizeVertical,
+                              fontWeight: FontWeight.bold,
+                              height: 1),
+                        )),
+                    Center(
+                      child: Stack(
+                        children: [
+                          SizedBox(
+                            height: 282 * SizeConfig.blockSizeVertical,
+                            width: 342 * SizeConfig.blockSizeHorizontal,
+                            child: Image.asset(
+                                'assets/svg/home_page/medical_culture.jpg'),
+                          ),
+                          Positioned(
+                            top: 35 * SizeConfig.blockSizeVertical,
+                            left: 20 * SizeConfig.blockSizeHorizontal,
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10)),
+                                height: 18 * SizeConfig.blockSizeVertical,
+                                width: 96 * SizeConfig.blockSizeHorizontal,
+                                child: Center(
+                                    child: Text(
+                                  "Medical Culture",
+                                  style: TextStyle(
+                                      fontSize:
+                                          10 * SizeConfig.blockSizeVertical),
+                                ))),
+                          ),
+                          Positioned(
+                            top: 150 * SizeConfig.blockSizeVertical,
+                            left: 20 * SizeConfig.blockSizeHorizontal,
+                            child: Container(
+                                height: 18 * SizeConfig.blockSizeVertical,
+                                //width: 96 * SizeConfig.blockSizeHorizontal,
+                                child: Center(
+                                    child: Text(
+                                  "Explore the World of Medicine",
+                                  style: TextStyle(
+                                      fontSize:
+                                          16 * SizeConfig.blockSizeVertical,
+                                      color: Colors.white),
+                                ))),
+                          ),
+                          Positioned(
+                            bottom: 80 * SizeConfig.blockSizeVertical,
+                            left: 20 * SizeConfig.blockSizeHorizontal,
+                            child: Container(
+                                // height: 18 * SizeConfig.blockSizeVertical,
+                                width: 350 * SizeConfig.blockSizeHorizontal,
+                                child: Center(
+                                    child: Text(
+                                  "Learn about inspiring stories, expert advice, and the latest innovations in healthcare.",
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                      fontSize:
+                                          10 * SizeConfig.blockSizeVertical,
+                                      color: Colors.white,
+                                      height: 1),
+                                ))),
+                          ),
+                          Positioned(
+                            bottom: 35 * SizeConfig.blockSizeVertical,
+                            left: 20 * SizeConfig.blockSizeHorizontal,
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15)),
+                                height: 24 * SizeConfig.blockSizeVertical,
+                                width: 82 * SizeConfig.blockSizeHorizontal,
+                                child: Center(
+                                    child: Text(
+                                  "Learn More",
+                                  style: TextStyle(
+                                      fontSize:
+                                          10 * SizeConfig.blockSizeVertical),
+                                ))),
                           ),
                         ],
                       ),

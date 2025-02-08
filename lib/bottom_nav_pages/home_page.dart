@@ -154,6 +154,7 @@ class _HomePageState extends State<HomePage> {
                               child: Text(
                             "Select Doctor",
                             style: TextStyle(
+                              color: Colors.black,
                                 fontSize: 12 * SizeConfig.blockSizeVertical),
                           )),
                         )
@@ -264,6 +265,7 @@ class _HomePageState extends State<HomePage> {
                                             Text(
                                               "Thank You For Donating!",
                                               style: TextStyle(
+                                                  color: Colors.black,
                                                   fontSize: 10 *
                                                       SizeConfig
                                                           .blockSizeVertical,
@@ -272,6 +274,7 @@ class _HomePageState extends State<HomePage> {
                                             Text(
                                               "Blood Donation",
                                               style: TextStyle(
+                                                  color: Colors.black,
                                                   fontSize: 16 *
                                                       SizeConfig
                                                           .blockSizeVertical,
@@ -280,6 +283,7 @@ class _HomePageState extends State<HomePage> {
                                             Text(
                                               "Each person who donates blood can save up to 3 lives. 💉🙏",
                                               style: TextStyle(
+                                                  color: Colors.black,
                                                   fontSize: 10 *
                                                       SizeConfig
                                                           .blockSizeVertical,
@@ -398,8 +402,7 @@ class _HomePageState extends State<HomePage> {
                                     Text(
                                       docTitle[index],
                                       style: TextStyle(
-                                          fontSize:
-                                              16 * SizeConfig.blockSizeVertical,
+                                          fontSize: 16 * SizeConfig.blockSizeVertical,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.black),
                                     ),
@@ -411,8 +414,7 @@ class _HomePageState extends State<HomePage> {
                                         Text(
                                           docHeading[index],
                                           style: TextStyle(
-                                              fontSize: 11 *
-                                                  SizeConfig.blockSizeVertical,
+                                              fontSize: 11 * SizeConfig.blockSizeVertical,
                                               fontWeight: FontWeight.w400,
                                               color: Colors.black),
                                         ),
@@ -436,6 +438,7 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           'Browse By Specialization',
                           style: TextStyle(
+                              color: Colors.black,
                               fontSize: 15 * SizeConfig.blockSizeVertical,
                               fontWeight: FontWeight.w600),
                         ),
@@ -511,9 +514,9 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 "Popular Doctor",
                                 style: TextStyle(
+                                    color: Colors.black,
                                     fontWeight: FontWeight.w600,
-                                    fontSize:
-                                        16 * SizeConfig.blockSizeVertical),
+                                    fontSize: 16 * SizeConfig.blockSizeVertical),
                               ),
                               Spacer(),
                               GestureDetector(
@@ -595,6 +598,7 @@ class _HomePageState extends State<HomePage> {
                                               textAlign: TextAlign.center,
                                               maxLines: 1,
                                               style: TextStyle(
+                                                  color: Colors.black,
                                                   fontSize: 16 *
                                                       SizeConfig
                                                           .blockSizeVertical,
@@ -608,6 +612,7 @@ class _HomePageState extends State<HomePage> {
                                               textAlign: TextAlign.center,
                                               maxLines: 1,
                                               style: TextStyle(
+                                                  color: Colors.black,
                                                   fontSize: 12 *
                                                       SizeConfig
                                                           .blockSizeVertical,
@@ -621,6 +626,7 @@ class _HomePageState extends State<HomePage> {
                                               textAlign: TextAlign.center,
                                               maxLines: 1,
                                               style: TextStyle(
+                                                  color: Colors.black,
                                                   fontSize: 12 *
                                                       SizeConfig
                                                           .blockSizeVertical,
@@ -658,6 +664,7 @@ class _HomePageState extends State<HomePage> {
                                                     textAlign: TextAlign.center,
                                                     maxLines: 1,
                                                     style: TextStyle(
+                                                        color: Colors.black,
                                                         fontSize: 12 *
                                                             SizeConfig
                                                                 .blockSizeVertical,
@@ -703,6 +710,7 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
                         child: Text('Learn more about the World of\nDoctors',
                           style: TextStyle(
+                              color: Colors.black,
                               fontSize: 16 * SizeConfig.blockSizeVertical,
                               fontWeight: FontWeight.bold,
                               height: 1),
@@ -729,6 +737,7 @@ class _HomePageState extends State<HomePage> {
                                     child: Text(
                                   "Medical Culture",
                                   style: TextStyle(
+                                      color: Colors.black,
                                       fontSize:
                                           10 * SizeConfig.blockSizeVertical),
                                 ))),
@@ -778,6 +787,7 @@ class _HomePageState extends State<HomePage> {
                                     child: Text(
                                   "Learn More",
                                   style: TextStyle(
+                                      color: Colors.black,
                                       fontSize:
                                           10 * SizeConfig.blockSizeVertical),
                                 ))),

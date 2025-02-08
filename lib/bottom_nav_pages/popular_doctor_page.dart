@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:hospital_app/constants/SizeConfig.dart';
 
 class PopularDoctorPage extends StatefulWidget {
@@ -57,11 +58,20 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
               SizedBox(
                 height: 45 * SizeConfig.blockSizeVertical,
               ),
-              Text(
-                'Popular Doctors',
-                style: TextStyle(
-                    fontSize: 20 * SizeConfig.blockSizeVertical,
-                    color: Colors.black),
+              Row(
+                children: [
+                  GestureDetector(
+                      onTap: (){
+                        Get.back();
+                      },
+                      child: Icon(Icons.arrow_back_ios,size: 20 * SizeConfig.blockSizeVertical,color: Colors.black,)),
+                  Text(
+                    'Popular Doctors',
+                    style: TextStyle(
+                        fontSize: 20 * SizeConfig.blockSizeVertical,
+                        color: Colors.black),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10 * SizeConfig.blockSizeVertical,
@@ -180,6 +190,7 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                       textAlign: TextAlign.center,
                                       maxLines: 1,
                                       style: TextStyle(
+                                          color: Colors.black,
                                           fontSize:
                                               16 * SizeConfig.blockSizeVertical,
                                           fontWeight: FontWeight.w600),
@@ -191,6 +202,7 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                       textAlign: TextAlign.center,
                                       maxLines: 1,
                                       style: TextStyle(
+                                          color: Colors.black,
                                           fontSize:
                                               12 * SizeConfig.blockSizeVertical,
                                           fontWeight: FontWeight.w400),
@@ -228,6 +240,7 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                       Text(
                                         'Available Now',
                                         style: TextStyle(
+                                            color: Colors.black,
                                             fontSize: 14 *
                                                 SizeConfig.blockSizeVertical,
                                             fontWeight: FontWeight.bold),
@@ -242,6 +255,7 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                           Text(
                                             'Video Consult',
                                             style: TextStyle(
+                                                color: Colors.black,
                                                 fontSize: 12 *
                                                     SizeConfig
                                                         .blockSizeVertical,
@@ -266,6 +280,7 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                       Text(
                                         'Rs. 600',
                                         style: TextStyle(
+                                            color: Colors.black,
                                             fontSize: 14 *
                                                 SizeConfig.blockSizeVertical,
                                             fontWeight: FontWeight.bold),
@@ -273,6 +288,7 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                       Text(
                                         'Consultation Fee',
                                         style: TextStyle(
+                                            color: Colors.black,
                                             fontSize: 12 *
                                                 SizeConfig.blockSizeVertical,
                                             fontWeight: FontWeight.normal),

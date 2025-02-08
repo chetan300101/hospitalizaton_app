@@ -488,6 +488,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Text(
                                   listViewImages[index]['title'],
                                   textAlign: TextAlign.center,
+                                  style: TextStyle(color: Colors.black,fontSize: 12 * SizeConfig.blockSizeVertical),
                                   maxLines: 2,
                                 ))
                           ],

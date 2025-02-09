@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hospital_app/constants/ThemeController.dart';
 
 import 'bottom_nav_pages/home_page.dart';
 import 'bottom_nav_pages/settings_page.dart';
@@ -18,8 +19,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     AppDataController appDataController = Get.put(AppDataController());
+    ThemeController themeController = Get.put(ThemeController());
     return GetMaterialApp(
-      darkTheme: ThemeData.dark(),
+      darkTheme: ThemeData.light(),
+      themeMode: ThemeMode.light,
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

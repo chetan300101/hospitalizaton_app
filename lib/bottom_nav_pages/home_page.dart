@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hospital_app/bottom_nav_pages/popular_doctor_page.dart';
+import 'package:hospital_app/constants/Extensions.dart';
 import 'package:hospital_app/constants/app_data_controller.dart';
 
 import '../constants/SizeConfig.dart';
@@ -112,15 +113,11 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           "Chetan Kale",
-                          style: TextStyle(
-                              fontSize: 20 * SizeConfig.blockSizeVertical,
-                              color: Colors.white),
+                          style: 20.DemiBold.Setcolor(Colors.white),
                         ),
                         Text(
                           "Pune",
-                          style: TextStyle(
-                              fontSize: 12 * SizeConfig.blockSizeVertical,
-                              color: Colors.white),
+                          style: 12.regular.Setcolor(Colors.white),
                         ),
                       ],
                     ),
@@ -153,9 +150,7 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                               child: Text(
                             "Select Doctor",
-                            style: TextStyle(
-                              color: Colors.black,
-                                fontSize: 12 * SizeConfig.blockSizeVertical),
+                            style: 12.regular.txtclr,
                           )),
                         )
                       ],
@@ -236,11 +231,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                           Text(
                                             "Appreciating",
-                                            style: TextStyle(
-                                                fontSize: 10 *
-                                                    SizeConfig
-                                                        .blockSizeVertical,
-                                                color: Colors.black),
+                                            style: 10.regular.txtclr,
                                           ),
                                         ],
                                       ),
@@ -264,30 +255,15 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             Text(
                                               "Thank You For Donating!",
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 10 *
-                                                      SizeConfig
-                                                          .blockSizeVertical,
-                                                  fontWeight: FontWeight.w500),
+                                              style: 10.medium.txtclr,
                                             ),
                                             Text(
                                               "Blood Donation",
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 16 *
-                                                      SizeConfig
-                                                          .blockSizeVertical,
-                                                  fontWeight: FontWeight.w600),
+                                              style: 16.DemiBold.txtclr,
                                             ),
                                             Text(
                                               "Each person who donates blood can save up to 3 lives. 💉🙏",
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 10 *
-                                                      SizeConfig
-                                                          .blockSizeVertical,
-                                                  fontWeight: FontWeight.w400),
+                                              style: 10.regular.txtclr,
                                               maxLines: 2,
                                             ),
                                             Spacer(),
@@ -310,13 +286,9 @@ class _HomePageState extends State<HomePage> {
                                                 child: Center(
                                                   child: Text(
                                                     "Find More Donors",
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 10 *
-                                                            SizeConfig
-                                                                .blockSizeVertical),
+                                                    style: 10
+                                                        .regular
+                                                        .Setcolor(Colors.white),
                                                   ),
                                                 ),
                                               ),
@@ -363,8 +335,10 @@ class _HomePageState extends State<HomePage> {
                                     Stack(
                                       children: [
                                         ClipRRect(
-                                            borderRadius: BorderRadius.circular(10),
-                                            child: Image.network(imageArray[index])),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            child: Image.network(
+                                                imageArray[index])),
                                         Align(
                                           alignment: Alignment.topRight,
                                           child: Container(
@@ -401,27 +375,19 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     Text(
                                       docTitle[index],
-                                      style: TextStyle(
-                                          fontSize: 16 * SizeConfig.blockSizeVertical,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.black),
+                                      style: 16.DemiBold.txtclr,
                                     ),
                                     Row(
-                                      spacing:
-                                          5 * SizeConfig.blockSizeHorizontal,
+                                      spacing: 5 * SizeConfig.blockSizeHorizontal,
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text(
                                           docHeading[index],
-                                          style: TextStyle(
-                                              fontSize: 11 * SizeConfig.blockSizeVertical,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.black),
+                                          style: 11.regular.txtclr,
                                         ),
                                         Icon(
                                           Icons.arrow_forward,
-                                          size:
-                                              15 * SizeConfig.blockSizeVertical,
+                                          size: 15 * SizeConfig.blockSizeVertical,
                                         )
                                       ],
                                     ),
@@ -437,18 +403,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Text(
                           'Browse By Specialization',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15 * SizeConfig.blockSizeVertical,
-                              fontWeight: FontWeight.w600),
+                          style: 15.DemiBold.txtclr,
                         ),
                         Spacer(),
                         Text(
                           'See all',
-                          style: TextStyle(
-                              fontSize: 14 * SizeConfig.blockSizeVertical,
-                              fontWeight: FontWeight.w500,
-                              color: Color.fromRGBO(1, 166, 157, 1)),
+                          style: 14.medium.Setcolor(Color.fromRGBO(1, 166, 157, 1)),
                         ),
                         SizedBox(
                           width: 10 * SizeConfig.blockSizeHorizontal,
@@ -469,7 +429,7 @@ class _HomePageState extends State<HomePage> {
                         scrollDirection: Axis.horizontal,
                         itemCount: listViewImages.length,
                         itemBuilder: (context, index) => Column(
-                          spacing: 1 * SizeConfig.blockSizeVertical,
+                          spacing: 5 * SizeConfig.blockSizeVertical,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -489,7 +449,8 @@ class _HomePageState extends State<HomePage> {
                                 child: Text(
                                   listViewImages[index]['title'],
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(color: Colors.black,fontSize: 12 * SizeConfig.blockSizeVertical,height: 1.1 * SizeConfig.blockSizeVertical),
+                                  style:
+                                  12.medium.txtclr.lineHeight(1.1),
                                   maxLines: 2,
                                 ))
                           ],
@@ -515,23 +476,17 @@ class _HomePageState extends State<HomePage> {
                               ),
                               Text(
                                 "Popular Doctor",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16 * SizeConfig.blockSizeVertical),
+                                style: 16.DemiBold.txtclr,
                               ),
                               Spacer(),
                               GestureDetector(
                                 behavior: HitTestBehavior.translucent,
-                                onTap: (){
+                                onTap: () {
                                   Get.to(PopularDoctorPage());
                                 },
                                 child: Text(
                                   'See all',
-                                  style: TextStyle(
-                                      fontSize: 14 * SizeConfig.blockSizeVertical,
-                                      fontWeight: FontWeight.w500,
-                                      color: Color.fromRGBO(1, 166, 157, 1)),
+                                  style: 14.medium.Setcolor(Color.fromRGBO(1, 166, 157, 1)),
                                 ),
                               ),
                               SizedBox(
@@ -599,12 +554,7 @@ class _HomePageState extends State<HomePage> {
                                               doctorsList[index]['name'],
                                               textAlign: TextAlign.center,
                                               maxLines: 1,
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 16 *
-                                                      SizeConfig
-                                                          .blockSizeVertical,
-                                                  fontWeight: FontWeight.w600),
+                                              style: 16.bold.txtclr,
                                             )),
                                         SizedBox(
                                             height: 20 *
@@ -613,12 +563,7 @@ class _HomePageState extends State<HomePage> {
                                               doctorsList[index]['specialist'],
                                               textAlign: TextAlign.center,
                                               maxLines: 1,
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 12 *
-                                                      SizeConfig
-                                                          .blockSizeVertical,
-                                                  fontWeight: FontWeight.w400),
+                                              style: 12.regular.txtclr,
                                             )),
                                         SizedBox(
                                             height: 20 *
@@ -627,15 +572,10 @@ class _HomePageState extends State<HomePage> {
                                               doctorsList[index]['experience'],
                                               textAlign: TextAlign.center,
                                               maxLines: 1,
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 12 *
-                                                      SizeConfig
-                                                          .blockSizeVertical,
-                                                  fontWeight: FontWeight.w400),
+                                              style: 12.regular.txtclr,
                                             )),
                                         SizedBox(
-                                          height: 5,
+                                          height: 5 *SizeConfig.blockSizeVertical,
                                         ),
                                         SizedBox(
                                           //color: Colors.red,
@@ -665,13 +605,8 @@ class _HomePageState extends State<HomePage> {
                                                         ['location'],
                                                     textAlign: TextAlign.center,
                                                     maxLines: 1,
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 12 *
-                                                            SizeConfig
-                                                                .blockSizeVertical,
-                                                        fontWeight:
-                                                            FontWeight.w400),
+                                                    style:
+                                                    12.regular.txtclr,
                                                   )),
                                               Spacer(),
                                               Icon(
@@ -709,13 +644,11 @@ class _HomePageState extends State<HomePage> {
                       height: 10 * SizeConfig.blockSizeVertical,
                     ),
                     Container(
-                        padding: EdgeInsets.only(left: 20 * SizeConfig.blockSizeHorizontal),
-                        child: Text('Learn more about the World of\nDoctors',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16 * SizeConfig.blockSizeVertical,
-                              fontWeight: FontWeight.bold,
-                              height: 1),
+                        padding: EdgeInsets.only(
+                            left: 20 * SizeConfig.blockSizeHorizontal),
+                        child: Text(
+                          'Learn more about the World of\nDoctors',
+                          style: 16.bold.txtclr,
                         )),
                     Center(
                       child: Stack(
@@ -738,25 +671,18 @@ class _HomePageState extends State<HomePage> {
                                 child: Center(
                                     child: Text(
                                   "Medical Culture",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize:
-                                          10 * SizeConfig.blockSizeVertical),
+                                  style:
+                                  10.regular.txtclr,
                                 ))),
                           ),
                           Positioned(
                             top: 150 * SizeConfig.blockSizeVertical,
                             left: 20 * SizeConfig.blockSizeHorizontal,
-                            child: Container(
+                            child: SizedBox(
                                 height: 18 * SizeConfig.blockSizeVertical,
-                                //width: 96 * SizeConfig.blockSizeHorizontal,
-                                child: Center(
-                                    child: Text(
+                                child: Center(child: Text(
                                   "Explore the World of Medicine",
-                                  style: TextStyle(
-                                      fontSize:
-                                          16 * SizeConfig.blockSizeVertical,
-                                      color: Colors.white),
+                                  style: 16.DemiBold.Setcolor(Colors.white),
                                 ))),
                           ),
                           Positioned(
@@ -769,11 +695,8 @@ class _HomePageState extends State<HomePage> {
                                     child: Text(
                                   "Learn about inspiring stories, expert advice, and the latest innovations in healthcare.",
                                   maxLines: 2,
-                                  style: TextStyle(
-                                      fontSize:
-                                          10 * SizeConfig.blockSizeVertical,
-                                      color: Colors.white,
-                                      height: 1),
+                                  style:
+                                  10.regular.Setcolor(Colors.white),
                                 ))),
                           ),
                           Positioned(
@@ -788,10 +711,8 @@ class _HomePageState extends State<HomePage> {
                                 child: Center(
                                     child: Text(
                                   "Learn More",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize:
-                                          10 * SizeConfig.blockSizeVertical),
+                                  style:
+                                  10.regular.txtclr,
                                 ))),
                           ),
                         ],

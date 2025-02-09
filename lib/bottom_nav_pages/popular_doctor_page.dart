@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hospital_app/constants/Extensions.dart';
 import 'package:hospital_app/constants/SizeConfig.dart';
 
 class PopularDoctorPage extends StatefulWidget {
@@ -67,9 +68,7 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                       child: Icon(Icons.arrow_back_ios,size: 20 * SizeConfig.blockSizeVertical,color: Colors.black,)),
                   Text(
                     'Popular Doctors',
-                    style: TextStyle(
-                        fontSize: 20 * SizeConfig.blockSizeVertical,
-                        color: Colors.black),
+                    style: 20.DemiBold.txtclr,
                   ),
                 ],
               ),
@@ -100,18 +99,13 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                     children: [
                       Text(
                         '100 Doctors found in',
-                        style: TextStyle(
-                            fontSize: 14 * SizeConfig.blockSizeVertical,
-                            color: Colors.black,
-                            height: 1),
+                        style:
+                        14.medium.Setcolor(Color(0xff747B88))
                       ),
                       Text(
                         'General Physician',
-                        style: TextStyle(
-                            fontSize: 14 * SizeConfig.blockSizeVertical,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            height: 1),
+                        style:
+                        14.medium.txtclr,
                       ),
                     ],
                   ),
@@ -189,11 +183,8 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                       doctorsList[index]['name'],
                                       textAlign: TextAlign.center,
                                       maxLines: 1,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize:
-                                              16 * SizeConfig.blockSizeVertical,
-                                          fontWeight: FontWeight.w600),
+                                      style:
+                                      16.DemiBold.txtclr,
                                     )),
                                 SizedBox(
                                     height: 20 * SizeConfig.blockSizeVertical,
@@ -201,11 +192,8 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                       doctorsList[index]['specialist'],
                                       textAlign: TextAlign.center,
                                       maxLines: 1,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize:
-                                              12 * SizeConfig.blockSizeVertical,
-                                          fontWeight: FontWeight.w400),
+                                      style:
+                                      12.medium.txtclr,
                                     )),
                               ],
                             )
@@ -239,11 +227,8 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                     children: [
                                       Text(
                                         'Available Now',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 14 *
-                                                SizeConfig.blockSizeVertical,
-                                            fontWeight: FontWeight.bold),
+                                        style:
+                                        14.medium.txtclr,
                                       ),
                                       Row(
                                         children: [
@@ -254,12 +239,8 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                           ),
                                           Text(
                                             'Video Consult',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 12 *
-                                                    SizeConfig
-                                                        .blockSizeVertical,
-                                                fontWeight: FontWeight.normal),
+                                            style:
+                                            12.medium.txtclr,
                                           ),
                                         ],
                                       ),
@@ -279,19 +260,12 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                     children: [
                                       Text(
                                         'Rs. 600',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 14 *
-                                                SizeConfig.blockSizeVertical,
-                                            fontWeight: FontWeight.bold),
+                                        style:
+                                        14.DemiBold.txtclr,
                                       ),
                                       Text(
                                         'Consultation Fee',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 12 *
-                                                SizeConfig.blockSizeVertical,
-                                            fontWeight: FontWeight.normal),
+                                        style: 12.medium.txtclr,
                                       ),
                                     ],
                                   ),
@@ -314,11 +288,9 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                   children: [
                                     Text(
                                       'Book Appointment',
-                                      style: TextStyle(
-                                          fontSize: 16 *
-                                              SizeConfig.blockSizeVertical,
-                                          fontWeight: FontWeight.normal,
-                                          color: Colors.white),
+                                      style:
+
+                                      14.DemiBold.Setcolor(Colors.white),
                                     ),
                                     SizedBox(
                                       width:

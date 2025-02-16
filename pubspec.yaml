@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.6.6
   flutter_svg: ^2.0.17
+  syncfusion_flutter_calendar: ^28.2.5
+  table_calendar: ^3.2.0
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +67,7 @@ flutter:
     - assets/
     - assets/svg/
     - assets/svg/home_page/
+    - assets/svg/doctor_details/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

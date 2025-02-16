@@ -6,7 +6,9 @@ import 'package:hospital_app/bottom_nav_pages/popular_doctor_page.dart';
 import 'package:hospital_app/constants/Extensions.dart';
 import 'package:hospital_app/constants/app_data_controller.dart';
 
+import '../common_widgets/common_widgets.dart';
 import '../constants/SizeConfig.dart';
+import 'doctor_details.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -482,7 +484,7 @@ class _HomePageState extends State<HomePage> {
                               GestureDetector(
                                 behavior: HitTestBehavior.translucent,
                                 onTap: () {
-                                  Get.to(PopularDoctorPage());
+                                  nextPageNavigationMethod(context,PopularDoctorPage());
                                 },
                                 child: Text(
                                   'See all',

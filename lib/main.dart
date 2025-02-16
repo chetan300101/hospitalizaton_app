@@ -3,8 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hospital_app/constants/ThemeController.dart';
 
+import 'bottom_nav_pages/blogs_page.dart';
 import 'bottom_nav_pages/home_page.dart';
-import 'bottom_nav_pages/settings_page.dart';
+import 'bottom_nav_pages/profile_page.dart';
 import 'constants/SizeConfig.dart';
 import 'constants/app_data_controller.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       darkTheme: ThemeData.light(),
       themeMode: ThemeMode.light,
-      title: 'Flutter Demo',
+      title: 'Hospital app',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -58,8 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0, selectedBottomIndex = 0;
   static final List<Widget> _pages = <Widget>[
     HomePage(),
-    const Center(child: Text('Search Page', style: TextStyle(fontSize: 20))),
-    const Center(child: Text('Profile Page', style: TextStyle(fontSize: 20))),
+    BlogsPage(),
     SettingsPage(
       toggleTheme: () {},
       isDarkTheme: false,
@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     const BottomNavigationBarItem(
                         icon: Icon(Icons.person_outline),
-                        label: 'Settings',
+                        label: 'Profile',
                         activeIcon: Icon(Icons.person)),
                   ],
                   currentIndex: _selectedIndex,

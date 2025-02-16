@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hospital_app/bottom_nav_pages/doctor_details.dart';
 import 'package:hospital_app/constants/Extensions.dart';
 import 'package:hospital_app/constants/SizeConfig.dart';
+
+import '../common_widgets/common_widgets.dart';
+import '../constants/app_data_controller.dart';
 
 class PopularDoctorPage extends StatefulWidget {
   const PopularDoctorPage({super.key});
@@ -35,6 +39,9 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
       "image": "assets/svg/home_page/doc_radha_shelke.jpg",
     },
   ];
+  AppDataController appDataController = Get.find();
+  TextEditingController controller = TextEditingController();
+  FocusNode textFieldFocus = FocusNode();
 
   @override
   void initState() {
@@ -48,41 +55,7 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(
-                left: 15 * SizeConfig.blockSizeHorizontal,
-                right: 15 * SizeConfig.blockSizeHorizontal),
-            height: 90 * SizeConfig.blockSizeVertical,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(1, 166, 157, 1),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 45 * SizeConfig.blockSizeVertical,
-                ),
-                Row(
-                  children: [
-                    GestureDetector(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          size: 20 * SizeConfig.blockSizeVertical,
-                          color: Colors.white,
-                        )),
-                    Text(
-                      'Popular Doctors',
-                      style: 20.DemiBold.Setcolor(Colors.white),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          commonAppBar(context, "Popular Doctors"),
           SizedBox(
             height: 10 * SizeConfig.blockSizeVertical,
           ),
@@ -91,11 +64,12 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                 left: 15 * SizeConfig.blockSizeHorizontal,
                 right: 15 * SizeConfig.blockSizeHorizontal),
             child: TextField(
+              controller: controller,
+              focusNode: textFieldFocus,
               decoration: InputDecoration(
                 hintText: 'Search by Doctor Name',
                 prefixIcon: Icon(Icons.search),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)
 
                         //borderSide: BorderSide.none,
                         ),
@@ -202,17 +176,54 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     SizedBox(
-                                      height: 5,
+                                      height: 5 * SizeConfig.blockSizeVertical,
                                     ),
-                                    SizedBox(
-                                        height:
-                                            25 * SizeConfig.blockSizeVertical,
-                                        child: Text(
-                                          doctorsList[index]['name'],
-                                          textAlign: TextAlign.center,
-                                          maxLines: 1,
-                                          style: 16.DemiBold.txtclr,
-                                        )),
+                                    Container(
+                                      width: 250 * SizeConfig.blockSizeHorizontal,
+                                      //color: Colors.red,
+                                      child: Row(
+                                        children: [
+                                          SizedBox(
+                                              height: 25 *
+                                                  SizeConfig.blockSizeVertical,
+                                              child: Text(
+                                                doctorsList[index]['name'],
+                                                textAlign: TextAlign.center,
+                                                maxLines: 1,
+                                                style: 16.DemiBold.txtclr,
+                                              )),
+                                          Spacer(),
+                                          Container(
+                                            height: 22 * SizeConfig.blockSizeVertical,
+                                            width: 40 * SizeConfig.blockSizeHorizontal,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffF3F5F7),borderRadius: 5.customRadius
+                                            ),
+                                            child: Row(
+                                              spacing: 1 * SizeConfig.blockSizeHorizontal,
+                                              children: [
+                                                SizedBox(
+                                                  width: 1 * SizeConfig.blockSizeHorizontal,
+                                                ),
+                                                Icon(
+                                                  Icons.star,
+                                                  size: 13 *
+                                                      SizeConfig.blockSizeVertical,
+                                                ),
+                                                SizedBox(
+                                                  width: 2 *
+                                                      SizeConfig.blockSizeHorizontal,
+                                                ),
+                                                Text(
+                                                  "4.5",
+                                                  style: 10.regular.txtclr,
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                     SizedBox(
                                         height:
                                             20 * SizeConfig.blockSizeVertical,
@@ -262,14 +273,17 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                           Row(
                                             children: [
                                               Icon(
-                                                Icons.video_call,
-                                                size: 10 *
+                                                color: Color(0xff12B76A),
+                                                Icons.videocam,
+                                                size: 20 *
                                                     SizeConfig
                                                         .blockSizeVertical,
                                               ),
                                               Text(
                                                 'Video Consult',
-                                                style: 12.medium.txtclr,
+                                                style: 12.medium.Setcolor(
+                                                      Color(0xff12B76A),
+                                                    ),
                                               ),
                                             ],
                                           ),
@@ -296,7 +310,9 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                           ),
                                           Text(
                                             'Consultation Fee',
-                                            style: 12.medium.txtclr,
+                                            style: 12
+                                                .medium
+                                                .Setcolor(Color(0xff12B76A)),
                                           ),
                                         ],
                                       ),
@@ -307,35 +323,49 @@ class _PopularDoctorPageState extends State<PopularDoctorPage> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 5,
+                                    height: 5 * SizeConfig.blockSizeVertical,
                                   ),
-                                  Container(
-                                    height: 42 * SizeConfig.blockSizeVertical,
-                                    width: 296 * SizeConfig.blockSizeHorizontal,
-                                    decoration: BoxDecoration(
-                                        color: Color(0xff01A69D),
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Book Appointment',
-                                          style: 14
-                                              .DemiBold
-                                              .Setcolor(Colors.white),
-                                        ),
-                                        SizedBox(
-                                          width: 5 *
-                                              SizeConfig.blockSizeHorizontal,
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Colors.white,
-                                          size:
-                                              15 * SizeConfig.blockSizeVertical,
-                                        )
-                                      ],
+                                  GestureDetector(
+                                    behavior: HitTestBehavior.translucent,
+                                    onTap: () {
+                                      textFieldFocus.unfocus();
+                                      appDataController.doctorDetailsArray
+                                          .clear();
+                                      appDataController.doctorDetailsArray
+                                          .add(doctorsList[index]);
+                                      nextPageNavigationMethod(
+                                          context, DoctorDetails());
+                                    },
+                                    child: Container(
+                                      height: 42 * SizeConfig.blockSizeVertical,
+                                      width:
+                                          296 * SizeConfig.blockSizeHorizontal,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xff01A69D),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Book Appointment',
+                                            style: 14
+                                                .DemiBold
+                                                .Setcolor(Colors.white),
+                                          ),
+                                          SizedBox(
+                                            width: 5 *
+                                                SizeConfig.blockSizeHorizontal,
+                                          ),
+                                          Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Colors.white,
+                                            size: 15 *
+                                                SizeConfig.blockSizeVertical,
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   )
                                 ],

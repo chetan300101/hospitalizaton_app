@@ -6,7 +6,7 @@ import '../constants/SizeConfig.dart';
 Widget commonAppBar(context, title) {
   return Container(
     padding: EdgeInsets.only(
-        left: 15 * SizeConfig.blockSizeHorizontal,
+        left: 10 * SizeConfig.blockSizeHorizontal,
         right: 15 * SizeConfig.blockSizeHorizontal),
     height: 80 * SizeConfig.blockSizeVertical,
     width: MediaQuery.of(context).size.width,
@@ -17,7 +17,7 @@ Widget commonAppBar(context, title) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 45 * SizeConfig.blockSizeVertical,
+          height: 35 * SizeConfig.blockSizeVertical,
         ),
         Row(
           children: [
@@ -52,9 +52,7 @@ Widget commonAppBar(context, title) {
 nextPageNavigationMethod(context, pageName) {
   Navigator.push(
     context,
-    PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => pageName,
-      transitionDuration: Duration.zero, // No transition animation
+    PageRouteBuilder(pageBuilder: (context, animation, secondaryAnimation) => pageName, transitionDuration: Duration.zero, // No transition animation
     ),
   );
 }

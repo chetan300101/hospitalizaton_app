@@ -33,7 +33,7 @@ class _LandingPageNavBarState extends State<LandingPageNavBar> {
         id: 'bottom_nav_bar',
           builder: (context) {
           return BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
+            type: BottomNavigationBarType.shifting,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_outlined),activeIcon: Icon(Icons.home),
@@ -45,6 +45,10 @@ class _LandingPageNavBarState extends State<LandingPageNavBar> {
                 label: 'Add',
               ),
               BottomNavigationBarItem(
+                icon: Icon(Icons.person_outlined),
+                activeIcon: Icon(Icons.person),
+                label: 'Profile',
+              ), BottomNavigationBarItem(
                 icon: Icon(Icons.person_outlined),
                 activeIcon: Icon(Icons.person),
                 label: 'Profile',

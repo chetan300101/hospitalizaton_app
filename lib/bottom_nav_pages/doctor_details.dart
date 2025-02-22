@@ -35,12 +35,29 @@ class _DoctorDetailsState extends State<DoctorDetails> {
 
   final List<Map<String, dynamic>> ratingData = [
     {'stars': 5, 'label': 'Excellent', 'progress': 0.75},
-    {'stars': 4, 'label': 'Good',      'progress': 0.60},
-    {'stars': 3, 'label': 'Average',   'progress': 0.40},
-    {'stars': 2, 'label': 'Below',     'progress': 0.20},
-    {'stars': 1, 'label': 'Poor',      'progress': 0.10},
+    {'stars': 4, 'label': 'Good', 'progress': 0.60},
+    {'stars': 3, 'label': 'Average', 'progress': 0.40},
+    {'stars': 2, 'label': 'Below', 'progress': 0.20},
+    {'stars': 1, 'label': 'Poor', 'progress': 0.10},
   ];
   double _rating = 0;
+
+  List<Map<String, dynamic>> docDetails = [
+    {
+      'name': 'Chhaya Deshmukh',
+      'date': 'March 04, 2025',
+      'img': "assets/svg/home_page/doc_kiran_doke.jpg",
+      'details':
+          "I was so worried about my baby’s health, especially with all the changes happening during preganacy. But Dr,Kevan expertise and reassuring demeanor helped me navigate through every concern, ensuring both my baby and I were in good hands."
+    },
+    {
+      'name': 'Nikita Indalkar',
+      'img': "assets/svg/home_page/doc_kiran_doke.jpg",
+      'date': 'April 04, 2025',
+      'details':
+          "I was so worried about my baby’s health, especially with all the changes happening during preganacy. But Dr,Kevan expertise and reassuring demeanor helped me navigate through every concern, ensuring both my baby and I were in good hands."
+    },
+  ];
 
   @override
   void initState() {
@@ -70,8 +87,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             children: [
               commonAppBar(context, "Doctor details"),
               SizedBox(
-                height: 640 * SizeConfig.blockSizeVertical,
-                //color: Colors.red,
+                height: 600 * SizeConfig.blockSizeVertical,
                 child: SingleChildScrollView(
                   physics: ClampingScrollPhysics(),
                   child: Column(
@@ -279,7 +295,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                 style: 14.bold.txtclr,
                               ),
                               Row(
-                                spacing: 5 *SizeConfig.blockSizeHorizontal,
+                                spacing: 5 * SizeConfig.blockSizeHorizontal,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -287,29 +303,35 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                     "4.5",
                                     style: 18.medium.txtclr,
                                   ),
-
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.only(top: 4 * SizeConfig.blockSizeVertical),
-                                        height: 30 * SizeConfig.blockSizeVertical,
+                                        padding: EdgeInsets.only(
+                                            top: 4 *
+                                                SizeConfig.blockSizeVertical),
+                                        height:
+                                            30 * SizeConfig.blockSizeVertical,
                                         child: RatingBar.builder(
                                           initialRating: _rating,
                                           minRating: 1,
                                           // or 0, if you allow 0
                                           direction: Axis.horizontal,
                                           allowHalfRating: true,
-                                          itemSize: 20 * SizeConfig.blockSizeVertical,
+                                          itemSize:
+                                              20 * SizeConfig.blockSizeVertical,
                                           itemCount: 5,
                                           itemPadding: EdgeInsets.symmetric(
                                               horizontal: 0.5 *
-                                                  SizeConfig.blockSizeHorizontal),
+                                                  SizeConfig
+                                                      .blockSizeHorizontal),
                                           itemBuilder: (context, _) => Icon(
                                             Icons.star,
                                             color: Colors.amber,
-                                            size: 12 * SizeConfig.blockSizeVertical,
+                                            size: 12 *
+                                                SizeConfig.blockSizeVertical,
                                           ),
                                           onRatingUpdate: (rating) {
                                             setState(() {
@@ -318,33 +340,49 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                           },
                                         ),
                                       ),
-                                      Text("500 Reviews",style: 14.DemiBold.Setcolor(Color(0xff93939E)),)
+                                      Text(
+                                        "500 Reviews",
+                                        style: 14
+                                            .DemiBold
+                                            .Setcolor(Color(0xff93939E)),
+                                      )
                                     ],
                                   ),
-
                                   Spacer(),
                                   Container(
                                     height: 30 * SizeConfig.blockSizeVertical,
                                     width: 115 * SizeConfig.blockSizeHorizontal,
                                     decoration: BoxDecoration(
-                                      borderRadius: 25.customRadius,
-                                      color: Color(0xff01A69D)
-                                    ),
+                                        borderRadius: 25.customRadius,
+                                        color: Color(0xff01A69D)),
                                     child: Row(
-                                      spacing: 3 * SizeConfig.blockSizeHorizontal,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      spacing:
+                                          3 * SizeConfig.blockSizeHorizontal,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Icon(Icons.add,color: Colors.white,size: 15 * SizeConfig.blockSizeVertical,),
-                                        Text("Add review",style: 11.medium.Setcolor(Colors.white),)
+                                        Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                          size:
+                                              15 * SizeConfig.blockSizeVertical,
+                                        ),
+                                        Text(
+                                          "Add review",
+                                          style:
+                                              11.medium.Setcolor(Colors.white),
+                                        )
                                       ],
                                     ),
                                   ),
-                                  SizedBox(width: 8 * SizeConfig.blockSizeHorizontal,)
+                                  SizedBox(
+                                    width: 8 * SizeConfig.blockSizeHorizontal,
+                                  )
                                 ],
                               ),
-
                               Padding(
-                                padding: EdgeInsets.all(8 * SizeConfig.blockSizeVertical),
+                                padding: EdgeInsets.all(
+                                    8 * SizeConfig.blockSizeVertical),
                                 child: Column(
                                   // Display each rating row from 5 to 1
                                   children: ratingData.map((data) {
@@ -353,7 +391,8 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                     final progress = data['progress'] as double;
 
                                     return Padding(
-                                      padding: const EdgeInsets.symmetric(vertical: 6.0),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 6.0),
                                       child: Row(
                                         children: [
                                           // Rating number (e.g., 5)
@@ -376,16 +415,21 @@ class _DoctorDetailsState extends State<DoctorDetails> {
 
                                           // Progress bar
                                           Container(
-                                            width: 220 * SizeConfig.blockSizeHorizontal,
+                                            width: 220 *
+                                                SizeConfig.blockSizeHorizontal,
                                             child: ClipRRect(
-                                              borderRadius: BorderRadius.circular(4),
+                                              borderRadius:
+                                                  BorderRadius.circular(4),
                                               child: LinearProgressIndicator(
                                                 // How much of the bar is filled
                                                 value: progress,
                                                 // Filled portion color
-                                                valueColor: const AlwaysStoppedAnimation<Color>(Colors.black),
+                                                valueColor:
+                                                    const AlwaysStoppedAnimation<
+                                                        Color>(Colors.black),
                                                 // Unfilled portion color
-                                                backgroundColor: Colors.grey[300],
+                                                backgroundColor:
+                                                    Colors.grey[300],
                                                 minHeight: 8,
                                               ),
                                             ),
@@ -405,20 +449,314 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                   }).toList(),
                                 ),
                               ),
+                              SizedBox(
+                                height: 10 * SizeConfig.blockSizeVertical,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: 10.customRadius,
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.25),
+                                        blurRadius: 12,
+                                        spreadRadius: 0,
+                                        offset: const Offset(0, 4),
+                                      ),
+                                    ]),
+                                width: 342 * SizeConfig.blockSizeHorizontal,
+                                height: 207 * SizeConfig.blockSizeVertical,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: 15 *
+                                              SizeConfig.blockSizeHorizontal,
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                              top: 7 *
+                                                  SizeConfig.blockSizeVertical),
+                                          height:
+                                              54 * SizeConfig.blockSizeVertical,
+                                          width:
+                                              54 * SizeConfig.blockSizeVertical,
+                                          child: ClipRRect(
+                                            borderRadius: 100.customRadius,
+                                            child: Image.asset(
+                                                'assets/svg/home_page/doc_kiran_doke.jpg'),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 5 *
+                                              SizeConfig.blockSizeHorizontal,
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          spacing:
+                                              8 * SizeConfig.blockSizeVertical,
+                                          children: [
+                                            SizedBox(
+                                              height: 5 *
+                                                  SizeConfig.blockSizeVertical,
+                                            ),
+                                            Text(
+                                              "Chhaya Deshmukh",
+                                              style: 16
+                                                  .medium
+                                                  .txtclr
+                                                  .lineHeight(1),
+                                            ),
+                                            Text(
+                                              "March 04, 2025",
+                                              style: 14
+                                                  .medium
+                                                  .Setcolor(Color.fromRGBO(
+                                                      82, 89, 102, 1))
+                                                  .lineHeight(1),
+                                            ),
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                              top: 10 *
+                                                  SizeConfig.blockSizeVertical,
+                                              right: 10 *
+                                                  SizeConfig
+                                                      .blockSizeHorizontal),
+                                          height:
+                                              22 * SizeConfig.blockSizeVertical,
+                                          width: 40 *
+                                              SizeConfig.blockSizeHorizontal,
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffF3F5F7),
+                                              borderRadius: 5.customRadius),
+                                          child: Row(
+                                            spacing: 1 *
+                                                SizeConfig.blockSizeHorizontal,
+                                            children: [
+                                              SizedBox(
+                                                width: 1 *
+                                                    SizeConfig
+                                                        .blockSizeHorizontal,
+                                              ),
+                                              Icon(
+                                                Icons.star,
+                                                size: 13 *
+                                                    SizeConfig
+                                                        .blockSizeVertical,
+                                              ),
+                                              SizedBox(
+                                                width: 2 *
+                                                    SizeConfig
+                                                        .blockSizeHorizontal,
+                                              ),
+                                              Text(
+                                                "4.5",
+                                                style: 10.regular.txtclr,
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 7 * SizeConfig.blockSizeVertical,),
+                                    Container(
+                                      padding: EdgeInsets.symmetric(horizontal: 15 * SizeConfig.blockSizeVertical),
+                                      child: Text(
+                                        'I was so worried about my baby’s health, especially with all the changes happening during preganacy. But Dr,Kevan expertise and reassuring demeanor helped me navigate through every concern, ensuring both my baby and I were in good hands.',
+                                        style: 14.medium.txtclr,
+                                        textAlign: TextAlign.start
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),SizedBox(
+                                height: 10 * SizeConfig.blockSizeVertical,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: 10.customRadius,
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.25),
+                                        blurRadius: 12,
+                                        spreadRadius: 0,
+                                        offset: const Offset(0, 4),
+                                      ),
+                                    ]),
+                                width: 342 * SizeConfig.blockSizeHorizontal,
+                                height: 207 * SizeConfig.blockSizeVertical,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: 15 *
+                                              SizeConfig.blockSizeHorizontal,
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                              top: 7 *
+                                                  SizeConfig.blockSizeVertical),
+                                          height:
+                                              54 * SizeConfig.blockSizeVertical,
+                                          width:
+                                              54 * SizeConfig.blockSizeVertical,
+                                          child: ClipRRect(
+                                            borderRadius: 100.customRadius,
+                                            child: Image.asset(
+                                                'assets/svg/home_page/doc_kiran_doke.jpg'),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 5 *
+                                              SizeConfig.blockSizeHorizontal,
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          spacing:
+                                              8 * SizeConfig.blockSizeVertical,
+                                          children: [
+                                            SizedBox(
+                                              height: 5 *
+                                                  SizeConfig.blockSizeVertical,
+                                            ),
+                                            Text(
+                                              "Chhaya Deshmukh",
+                                              style: 16
+                                                  .medium
+                                                  .txtclr
+                                                  .lineHeight(1),
+                                            ),
+                                            Text(
+                                              "March 04, 2025",
+                                              style: 14
+                                                  .medium
+                                                  .Setcolor(Color.fromRGBO(
+                                                      82, 89, 102, 1))
+                                                  .lineHeight(1),
+                                            ),
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                              top: 10 *
+                                                  SizeConfig.blockSizeVertical,
+                                              right: 10 *
+                                                  SizeConfig
+                                                      .blockSizeHorizontal),
+                                          height:
+                                              22 * SizeConfig.blockSizeVertical,
+                                          width: 40 *
+                                              SizeConfig.blockSizeHorizontal,
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffF3F5F7),
+                                              borderRadius: 5.customRadius),
+                                          child: Row(
+                                            spacing: 1 *
+                                                SizeConfig.blockSizeHorizontal,
+                                            children: [
+                                              SizedBox(
+                                                width: 1 *
+                                                    SizeConfig
+                                                        .blockSizeHorizontal,
+                                              ),
+                                              Icon(
+                                                Icons.star,
+                                                size: 13 *
+                                                    SizeConfig
+                                                        .blockSizeVertical,
+                                              ),
+                                              SizedBox(
+                                                width: 2 *
+                                                    SizeConfig
+                                                        .blockSizeHorizontal,
+                                              ),
+                                              Text(
+                                                "4.5",
+                                                style: 10.regular.txtclr,
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 7 * SizeConfig.blockSizeVertical,),
+                                    Container(
+                                      padding: EdgeInsets.symmetric(horizontal: 15 * SizeConfig.blockSizeVertical),
+                                      child: Text(
+                                        'I was so worried about my baby’s health, especially with all the changes happening during preganacy. But Dr,Kevan expertise and reassuring demeanor helped me navigate through every concern, ensuring both my baby and I were in good hands.',
+                                        style: 14.medium.txtclr,
+                                        textAlign: TextAlign.start
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10 * SizeConfig.blockSizeVertical,
+                              ),
 
-                              SizedBox(height: 10 * SizeConfig.blockSizeVertical,),
-                              Container(width: MediaQuery.of(context).size.width,
-                              child: Row(children: [
-                                ClipRRect(
-                                  borderRadius: 100.customRadius,
-
-                                  child:Image.asset(""),
-                                )
-                              ],),
-                              )
                             ],
                           )),
+
+
                     ],
+                  ),
+                ),
+              ),
+              Center(
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: () {
+                    //nextPageNavigationMethod(context, DoctorDetails());
+                  },
+                  child: Container(
+                    height: 42 * SizeConfig.blockSizeVertical,
+                    width: 340 * SizeConfig.blockSizeHorizontal,
+                    decoration: BoxDecoration(
+                        color: Color(0xff01A69D),
+                        borderRadius:
+                        BorderRadius.circular(5)),
+                    child: Row(
+                      mainAxisAlignment:
+                      MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Book Appointment',
+                          style: 14
+                              .DemiBold
+                              .Setcolor(Colors.white),
+                        ),
+                        SizedBox(
+                          width: 5 *
+                              SizeConfig.blockSizeHorizontal,
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.white,
+                          size: 15 *
+                              SizeConfig.blockSizeVertical,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               )

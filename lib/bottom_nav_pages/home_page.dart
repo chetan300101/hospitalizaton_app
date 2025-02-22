@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hospital_app/bottom_nav_pages/popular_doctor_page.dart';
 import 'package:hospital_app/constants/Extensions.dart';
+import 'package:hospital_app/constants/Themes.dart';
 import 'package:hospital_app/constants/app_data_controller.dart';
 
 import '../common_widgets/common_widgets.dart';
@@ -97,10 +98,10 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(
                 left: 15 * SizeConfig.blockSizeHorizontal,
                 right: 15 * SizeConfig.blockSizeHorizontal),
-            height: 90 * SizeConfig.blockSizeVertical,
+            height: 81 * SizeConfig.blockSizeVertical,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: Color.fromRGBO(1, 166, 157, 1),
+              //color: Color.fromRGBO(1, 166, 157, 1),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,11 +116,11 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           "Chetan Kale",
-                          style: 20.DemiBold.Setcolor(Colors.white),
+                          style: 20.DemiBold.txtclr,
                         ),
                         Text(
                           "Pune",
-                          style: 12.regular.Setcolor(Colors.white),
+                          style: 12.regular.txtclr,
                         ),
                       ],
                     ),
@@ -128,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Icon(
                           Icons.search,
-                          color: Colors.white,
+                          color: Themes.txtclr,
                           size: 20 * SizeConfig.blockSizeVertical,
                         ),
                         SizedBox(
@@ -136,25 +137,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Icon(
                           Icons.notifications,
-                          color: Colors.white,
+                          color: Themes.txtclr,
                           size: 20 * SizeConfig.blockSizeVertical,
                         ),
                         SizedBox(
                           width: 5,
                         ),
-                        Container(
-                          width: 99 * SizeConfig.blockSizeHorizontal,
-                          height: 25 * SizeConfig.blockSizeVertical,
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(255, 255, 255, 1),
-                              borderRadius: BorderRadius.circular(
-                                  10 * SizeConfig.blockSizeVertical)),
-                          child: Center(
-                              child: Text(
-                            "Select Doctor",
-                            style: 12.regular.txtclr,
-                          )),
-                        )
                       ],
                     )
                   ],
@@ -486,9 +474,15 @@ class _HomePageState extends State<HomePage> {
                                 onTap: () {
                                   nextPageNavigationMethod(context,PopularDoctorPage());
                                 },
-                                child: Text(
-                                  'See all',
-                                  style: 14.medium.Setcolor(Color.fromRGBO(1, 166, 157, 1)),
+                                child: Container(
+                                  height: 25 * SizeConfig.blockSizeVertical,
+                                  width: 50 * SizeConfig.blockSizeHorizontal,
+                                  child: Center(
+                                    child: Text(
+                                      'See all',
+                                      style: 14.medium.Setcolor(Color.fromRGBO(1, 166, 157, 1)),
+                                    ),
+                                  ),
                                 ),
                               ),
                               SizedBox(

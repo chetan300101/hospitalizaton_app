@@ -5,7 +5,9 @@ import 'package:hospital_app/constants/ThemeController.dart';
 
 import 'bottom_nav_pages/blogs_page.dart';
 import 'bottom_nav_pages/home_page.dart';
+import 'bottom_nav_pages/prescription_page.dart';
 import 'bottom_nav_pages/profile_page.dart';
+import 'bottom_nav_pages/settings_pages/themes_page.dart';
 import 'constants/SizeConfig.dart';
 import 'constants/app_data_controller.dart';
 
@@ -60,7 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
   static final List<Widget> _pages = <Widget>[
     HomePage(),
     BlogsPage(),
-    SettingsPage(
+    PrescriptionPage(),
+    ProfilePage(
       toggleTheme: () {},
       isDarkTheme: false,
     ),
@@ -75,53 +78,61 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return GetBuilder<AppDataController>(
         id: 'bottom_nav_bar',
-      builder: (controller) {
-        return Scaffold(
-            body: _pages[_selectedIndex],
-            bottomNavigationBar: Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 12, color: Color.fromRGBO(0, 0, 0, 0.15))
-                ],
-              ),
-              height: 60 * SizeConfig.blockSizeVertical,
-              child: ClipRRect(
-                borderRadius:
-                    BorderRadius.only(topRight: Radius.circular(25),topLeft: Radius.circular(25)),
-                child: BottomNavigationBar(
-                  backgroundColor: Colors.white,
-                  type: BottomNavigationBarType.fixed,
-                  items: <BottomNavigationBarItem>[
-                    const BottomNavigationBarItem(
-                      icon: Icon(Icons.home_outlined),
-                      activeIcon: Icon(Icons.home),
-                      label: 'Home',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: SvgPicture.asset(
-                        'assets/svg/home_page/blog_bottom_nav_icon.svg',
-                        color: _selectedIndex == 1
-                            ? Colors.blue
-                            : Colors.black38,
-                      ),
-                      label: 'Blogs',
-                    ),
-                    const BottomNavigationBarItem(
-                        icon: Icon(Icons.person_outline),
-                        label: 'Profile',
-                        activeIcon: Icon(Icons.person)),
+        builder: (controller) {
+          return Scaffold(
+              body: _pages[_selectedIndex],
+              bottomNavigationBar: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(blurRadius: 12, color: Color.fromRGBO(0, 0, 0, 0.15))
                   ],
-                  currentIndex: _selectedIndex,
-                  unselectedItemColor: Colors.black38,
-                  selectedItemColor: Colors.blue,
-                  onTap: _onItemTapped,
-                  selectedFontSize: 13 * SizeConfig.blockSizeVertical,
-                  unselectedFontSize: 13 * SizeConfig.blockSizeVertical,
                 ),
-              ),
-            ));
-      }
-    );
+                height: 60 * SizeConfig.blockSizeVertical,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(25),
+                      topLeft: Radius.circular(25)),
+                  child: BottomNavigationBar(
+                    backgroundColor: Colors.white,
+                    type: BottomNavigationBarType.fixed,
+                    items: <BottomNavigationBarItem>[
+                      const BottomNavigationBarItem(
+                        icon: Icon(Icons.home_outlined),
+                        activeIcon: Icon(Icons.home),
+                        label: 'Home',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: SvgPicture.asset(
+                          'assets/svg/home_page/blog_bottom_nav_icon.svg',
+                          color: _selectedIndex == 1
+                              ? Colors.blue
+                              : Colors.black38,
+                        ),
+                        label: 'Blogs',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: SvgPicture.asset(
+                          'assets/svg/home_page/prescription_icon.svg',
+                          color: _selectedIndex == 2
+                              ? Colors.blue
+                              : Colors.black38,
+                        ),
+                        label: 'Prescription',
+                      ),
+                      const BottomNavigationBarItem(
+                          icon: Icon(Icons.person_outline),
+                          label: 'Profile',
+                          activeIcon: Icon(Icons.person)),
+                    ],
+                    currentIndex: _selectedIndex,
+                    unselectedItemColor: Colors.black38,
+                    selectedItemColor: Colors.blue,
+                    onTap: _onItemTapped,
+                    selectedFontSize: 11 * SizeConfig.blockSizeVertical,
+                    unselectedFontSize: 11 * SizeConfig.blockSizeVertical,
+                  ),
+                ),
+              ));
+        });
   }
 }
